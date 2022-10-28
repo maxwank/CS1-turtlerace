@@ -4,6 +4,6 @@ public class Main {
     }
 
     public static void turtle() {
-        System.out.println("turtle");
+        System.out.println("turtle says hi");
     }
 }
