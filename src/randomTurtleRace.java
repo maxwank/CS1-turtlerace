@@ -141,7 +141,7 @@ public class randomTurtleRace
                 }
             }
             for (int k = 0; k < 6; k++) {
-                System.out.println(names[k] + "Turtle came in " + (k+1) + " with " + steps[k] + " steps.");
+                System.out.println(names[k] + "Turtle came in " + (k+1) + "th place with " + steps[k] + " steps.");
             }
         }
     }
