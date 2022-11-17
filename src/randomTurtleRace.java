@@ -1,5 +1,11 @@
 public class randomTurtleRace
 {
+    static int redSteps = 0;
+    static int greenSteps = 0;
+    static int blueSteps = 0;
+    static int orangeSteps = 0;
+    static int purpleSteps = 0;
+    static int yellowSteps = 0;
     public static void main(String[] args) {
         Turtle redTurtle = new Turtle();
         redTurtle.fillColor("red");
@@ -42,12 +48,6 @@ public class randomTurtleRace
         purpleTurtle.speed(1);
         yellowTurtle.speed(1);
 
-        int redSteps = 0;
-        int greenSteps = 0;
-        int blueSteps = 0;
-        int orangeSteps = 0;
-        int purpleSteps = 0;
-        int yellowSteps = 0;
 
         clear();
 
@@ -103,7 +103,13 @@ public class randomTurtleRace
                 }
             }
         }
+        listPosition();
+        wait(100);
+        clear();
+        finalPlace();
 
+    }
+    public static void listPosition(){
         System.out.println("The final position of the red turtle is " + redSteps);
         System.out.println("The final position of the green turtle is " + greenSteps);
         System.out.println("The final position of the blue turtle is " + blueSteps);
@@ -111,7 +117,6 @@ public class randomTurtleRace
         System.out.println("The final position of the purple turtle is " + purpleSteps);
         System.out.println("The final position of the yellow turtle is " + yellowSteps);
     }
-
     public static void clear()
     {
         System.out.print("\033[H\033[2J");
@@ -120,4 +125,37 @@ public class randomTurtleRace
     public static int random(int min, int max) {
         return (int) Math.floor(max*Math.random())+min;
     }
+
+    public static void finalPlace() {
+        int[] steps={redSteps, orangeSteps, yellowSteps, greenSteps,blueSteps, purpleSteps};//hold the step count
+        String[] names= {"red","orange","yellow","green","blue","purple"}; //hold the names corresponding to the steps
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5 - j; j++) //bubble sort
+            {
+                if (steps[j] < steps[j + 1]) //compare adjacent - - descending
+                {
+                    int temp = steps [j]; //swap for the step counts steps[j]=steps[j+1];
+                    steps[j + 1] = temp;
+                    String stringTemp = names[j]; //exact same swap for the names names_jI=names j+1];
+                    names[j + 1] = stringTemp;
+                }
+            }
+            for (int k = 0; k < 6; k++) {
+                System.out.println(names[k] + "Turtle came in " + (k+1) + " with " + steps[k] + " steps.");
+            }
+        }
+    }
+
+    public static void wait(int ms) {
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+    }
+
 }
+
